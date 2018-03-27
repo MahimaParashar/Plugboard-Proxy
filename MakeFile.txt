@@ -1,0 +1,11 @@
+all:
+	gcc pbproxy.c -o pbproxy -lcrypto -lpthread
+
+Run server: 
+	./pbproxy -k key.txt -l 2222 localhost 22
+
+Run client:
+	ssh -o "ProxyCommand ./pbproxy -k key.txt localhost 2222" localhost
+
+Clean:
+	rm -f pbproxy
